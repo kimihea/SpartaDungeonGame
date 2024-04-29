@@ -12,7 +12,7 @@ namespace SpartaDungeon
 
     internal class Inventory
     {
-        ItemList itemlist = new ItemList();
+        public ItemList itemlist = new ItemList();
         public int Gold = 8000;
 
     

@@ -11,13 +11,13 @@ namespace SpartaDungeon
             Status status = new Status();
             ItemList itemListM = new ItemList();
             Inventory inventory_storage1 = new Inventory();
-            //첫실행 때 파일을 만들어주는 코드 
+            //첫 실행 때 파일을 만들어주는 코드 
             //string jsonFromFile1 = JsonConvert.SerializeObject(status);
             //File.WriteAllText("status.json", jsonFromFile1);
             //string jsonFromFile2 = JsonConvert.SerializeObject(inventory_storage1);
             //File.WriteAllText("inventory.json", jsonFromFile2);
-            
-            //첫 실행때 여기는 주석처리
+
+            //첫 실행 때 여기는 주석처리
             string jsonFromFile1 = File.ReadAllText("status.json");
             status = JsonConvert.DeserializeObject<Status>(jsonFromFile1);
             string jsonFromFile2 = File.ReadAllText("inventory.json");
@@ -32,10 +32,6 @@ namespace SpartaDungeon
             //계속 선택을 고르게 한다.
             do
             {
-                jsonFromFile3 = JsonConvert.SerializeObject(itemListM);
-                jsonFromFile2 = JsonConvert.SerializeObject(inventory_storage1);
-                //jsonFromFile1 = JsonConvert.SerializeObject(status);
-
                 status.Gold = inventory_storage1.Gold;
                 status.ItemHp = inventory_storage1.EquitItemHp();  
                 status.ItemAd = inventory_storage1.EquitItemAd();
