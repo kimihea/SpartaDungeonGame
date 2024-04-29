@@ -14,7 +14,7 @@ namespace SpartaDungeon
         public static int len = 11;
         public Item[] itemList = new Item[len];
         int i;
-
+       
         public ItemList()
         {
 
@@ -82,9 +82,9 @@ namespace SpartaDungeon
             }
             return value;
         }
-        public string OptionOfItem(int num)
+        public string OptionOfItem(int index)
         {
-            return itemList[num - 1].option;
+            return itemList[index].option;
         }
         public void OptionUnCheck(string option)
         {

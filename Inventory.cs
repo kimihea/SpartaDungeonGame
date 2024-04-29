@@ -99,7 +99,7 @@ namespace SpartaDungeon
 
         public void PlayItemShopManage(bool isSelectBuy = false, bool isSelectSell = false)
         {
-            string select = Console.ReadLine();    //항목이 두자릿수가 될때를 위해서 ReadLine사용
+            string? select = Console.ReadLine();    //항목이 두자릿수가 될때를 위해서 ReadLine사용
             int number;
             if (int.TryParse(select, out number))
             {
@@ -203,12 +203,12 @@ namespace SpartaDungeon
                     {
                         if (!itemlist.isEquip(index[number - 1] + 1))
                         {
-                            itemlist.OptionUnCheck(itemlist.OptionOfItem(index[number - 1] + 1));
+                            itemlist.OptionUnCheck(itemlist.OptionOfItem(index[number - 1]));
                             itemlist.EquipItem(index[number - 1] + 1);
                         }
                         else
                         {
-                            itemlist.OptionUnCheck(itemlist.OptionOfItem(index[number - 1] + 1));
+                            itemlist.OptionUnCheck(itemlist.OptionOfItem(index[number - 1]));
                         }
                         DisplayInventoryManage();
                         PlayInventoryManage();
@@ -230,6 +230,6 @@ namespace SpartaDungeon
 
             }
         }
-
+       
     }
 }

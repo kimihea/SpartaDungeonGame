@@ -9,20 +9,31 @@ namespace SpartaDungeon
         {
             bool active = true;
             Status status = new Status();
+            ItemList itemListM = new ItemList();
             Inventory inventory_storage1 = new Inventory();
-
-            //첫 실행때만 주석처리
-            /*string jsonFromFile1 = File.ReadAllText("status.json");
+            //첫실행 때 파일을 만들어주는 코드 
+            //string jsonFromFile1 = JsonConvert.SerializeObject(status);
+            //File.WriteAllText("status.json", jsonFromFile1);
+            //string jsonFromFile2 = JsonConvert.SerializeObject(inventory_storage1);
+            //File.WriteAllText("inventory.json", jsonFromFile2);
+            
+            //첫 실행때 여기는 주석처리
+            string jsonFromFile1 = File.ReadAllText("status.json");
             status = JsonConvert.DeserializeObject<Status>(jsonFromFile1);
-            string jsonFromFile2 = File.ReadAllText("inventory.json");
-            inventory_storage1 = JsonConvert.DeserializeObject<Inventory>(jsonFromFile2);*/
+            string jsonFormFile2 = File.ReadAllText("inventory.json");
+            inventory_storage1 = JsonConvert.DeserializeObject<Inventory>(jsonFormFile2);
+            //여기까지
             int levelCount = 0;
             DisplayStart();
+
             //계속 선택을 고르게 한다.
             do
             {
+                jsonFormFile2 = JsonConvert.SerializeObject(inventory_storage1);
+                jsonFromFile1 = JsonConvert.SerializeObject(status);
+ 
                 status.Gold = inventory_storage1.Gold;
-                status.ItemHp = inventory_storage1.EquitItemHp();
+                status.ItemHp = inventory_storage1.EquitItemHp();  
                 status.ItemAd = inventory_storage1.EquitItemAd();
                 status.ItemDef = inventory_storage1.EquitItemDef();
                 status.level = status.level;
@@ -59,7 +70,7 @@ namespace SpartaDungeon
                         break;
                     case 4:
                         dungeon.DisplayDungeonMenu();
-                        (float reward, int afterhp) = dungeon.PlayDungeon(status.Def, status.Ad, status.Hp, status.Gold);
+                        (float reward, int afterhp) = dungeon.PlayDungeon((status.Def+status.ItemDef),(status.Ad+status.ItemAd), status.Hp, status.Gold);
                         if (reward > 0)
                         {
                             levelCount++;
