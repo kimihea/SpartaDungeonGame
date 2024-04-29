@@ -20,8 +20,11 @@ namespace SpartaDungeon
             //첫 실행때 여기는 주석처리
             string jsonFromFile1 = File.ReadAllText("status.json");
             status = JsonConvert.DeserializeObject<Status>(jsonFromFile1);
-            string jsonFormFile2 = File.ReadAllText("inventory.json");
-            inventory_storage1 = JsonConvert.DeserializeObject<Inventory>(jsonFormFile2);
+            string jsonFromFile2 = File.ReadAllText("inventory.json");
+            inventory_storage1 = JsonConvert.DeserializeObject<Inventory>(jsonFromFile2);
+            string jsonFromFile3 = File.ReadAllText("itemlist.json");
+            itemListM = JsonConvert.DeserializeObject<ItemList>(jsonFromFile3);
+
             //여기까지
             int levelCount = 0;
             DisplayStart();
@@ -29,9 +32,10 @@ namespace SpartaDungeon
             //계속 선택을 고르게 한다.
             do
             {
-                jsonFormFile2 = JsonConvert.SerializeObject(inventory_storage1);
-                jsonFromFile1 = JsonConvert.SerializeObject(status);
- 
+                jsonFromFile3 = JsonConvert.SerializeObject(itemListM);
+                jsonFromFile2 = JsonConvert.SerializeObject(inventory_storage1);
+                //jsonFromFile1 = JsonConvert.SerializeObject(status);
+
                 status.Gold = inventory_storage1.Gold;
                 status.ItemHp = inventory_storage1.EquitItemHp();  
                 status.ItemAd = inventory_storage1.EquitItemAd();

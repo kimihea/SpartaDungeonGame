@@ -14,6 +14,8 @@ namespace SpartaDungeon
     {
         ItemList itemlist = new ItemList();
         public int Gold = 8000;
+
+    
         public void DisplayInventory()
         {
 
